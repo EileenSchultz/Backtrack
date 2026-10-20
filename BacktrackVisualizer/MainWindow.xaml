@@ -1,0 +1,41 @@
+﻿<Window x:Class="BacktrackVisualizer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Визуализация Бэктрекинга" Height="600" Width="800" Background="#F0F0F0">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="200"/>
+        </Grid.RowDefinitions>
+
+        <!-- Панель управления -->
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="Введите N (число элементов): " VerticalAlignment="Center" FontSize="16"/>
+            <TextBox x:Name="TxtN" Width="50" FontSize="16" Text="3" Margin="10,0" TextAlignment="Center"/>
+            
+            <!-- Кнопка Старт/Продолжить -->
+            <Button x:Name="BtnStart" Content="Запустить" Padding="15,5" FontSize="16" Click="BtnStart_Click"/>
+            
+            <!-- НОВАЯ КНОПКА: Стоп (изначально неактивна) -->
+            <Button x:Name="BtnStop" Content="Стоп" Padding="15,5" FontSize="16" Margin="10,0,0,0" Click="BtnStop_Click" IsEnabled="False"/>
+        </StackPanel>
+
+        <!-- Текущее состояние -->
+        <StackPanel Grid.Row="1" Margin="0,0,0,20">
+            <TextBlock Text="Исходный массив (серый = использован):" FontWeight="Bold" FontSize="14"/>
+            <StackPanel x:Name="PnlOriginalArray" Orientation="Horizontal" Margin="0,5,0,15"/>
+            
+            <TextBlock Text="Текущая перестановка:" FontWeight="Bold" FontSize="14"/>
+            <StackPanel x:Name="PnlCurrentPath" Orientation="Horizontal" Margin="0,5,0,0"/>
+            
+            <TextBlock x:Name="TxtStatus" Text="Ожидание..." FontSize="18" Foreground="Blue" Margin="0,15,0,0" FontWeight="Bold"/>
+        </StackPanel>
+
+        <!-- Результаты -->
+        <GroupBox Header="Найденные перестановки" Grid.Row="3">
+            <ListBox x:Name="LstResults" FontSize="16" Margin="5"/>
+        </GroupBox>
+    </Grid>
+</Window>
